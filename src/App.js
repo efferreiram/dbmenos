@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import NavBar from './NavBar/NavBar'
+import JumboHeader from './JumboHeader/JumboHeader'
+import VideoEmbed from './VideoEmbed/VideoEmbed'
+import FormResults from './FormResults/FormResults'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <NavBar />
+        <JumboHeader />
+        <div className="container">
+          <VideoEmbed />
+          <FormResults />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
