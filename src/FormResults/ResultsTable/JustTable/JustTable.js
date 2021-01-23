@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
+import SingleResult from './SingleResult/SingleResult';
 
 class JustTable extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      'resultsType': null,
-      'results': [],
-      'exampleResults': []
-    };
-  }
   render() {
     return (
       <div className="col-12">
@@ -16,30 +9,18 @@ class JustTable extends Component {
         <div className="table-responsive">
           <table className="table table-striped">
             <thead className="thead-dark">
-              <th>Name</th>
-              <th>Year</th>
-              <th>Director</th>
-              <th>Producer</th>
+              <tr>
+                <th>Name</th>
+                <th>Year</th>
+                <th>Director</th>
+                <th>Producer</th>
+              </tr>
             </thead>
             <tbody>
-              <tr>
-                <th>Castle in the Sky</th>
-                <td>1986</td>
-                <td>Hayao Miyazaki</td>
-                <td>Isao Takahata</td>
-              </tr>
-              <tr>
-                <th>Castle in the Sky</th>
-                <td>1986</td>
-                <td>Hayao Miyazaki</td>
-                <td>Isao Takahata</td>
-              </tr>
-              <tr>
-                <th>Castle in the Sky</th>
-                <td>1986</td>
-                <td>Hayao Miyazaki</td>
-                <td>Isao Takahata</td>
-              </tr>
+              <SingleResult />
+              <SingleResult />
+              <SingleResult />
+              <SingleResult />
             </tbody>
           </table>
         </div>
