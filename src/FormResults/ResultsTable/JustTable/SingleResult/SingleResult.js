@@ -1,13 +1,21 @@
 import React, {Component} from 'react';
 
 class SingleResult extends Component {
+  renderData(value, key) {
+    return <td key={key}>{value}</td>
+  }
+
   render() {
+    var rows = [];
+    for(var i = 0; i < this.props.keys.length; i++) {
+      var key = this.props.keys[i];
+      var data = this.props.result[key];
+      rows.push(this.renderData(data, key));
+    }
+    
     return (
-      <tr>
-        <th>Castle in the Sky</th>
-        <td>1986</td>
-        <td>Hayao Miyazaki</td>
-        <td>Isao Takahata</td>
+      <tr key={this.props.resultid}>
+        {rows}
       </tr>
     );
   }

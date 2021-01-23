@@ -6,19 +6,15 @@ class FormResults extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      'resultsType': null,
+      'resultsKeys': null,
       'results': [],
       'exampleResults': [
         {'name':'Castle in the Sky', 'year':'1986', 'director':'Hayao Miyazaki', 'producer':'Isao Takahata'},
         {'name':'Grave of the Fireflies', 'year':'1988', 'director':'Isao Takahata', 'producer':'Toru Hara'},
         {'name':'Ponyo', 'year':'2008', 'director':'Hayao Miyazaki', 'producer':'Toshio Suzuki'}
       ],
-      'exampleType': 'movies'
+      'exampleKeys': ['name', 'year', 'director', 'producer'],
     };
-  }
-
-  makeRequest(args) {
-
   }
 
   render() {
@@ -28,7 +24,7 @@ class FormResults extends Component {
           <h1 className="nav-link-target" id="lookup">Hacer Peticiones</h1>
         </div>
         <PetitionForm />
-        <ResultsTable />
+        <ResultsTable results={this.state.exampleResults} keys={this.state.exampleKeys}/>
       </div>
     );
   }
