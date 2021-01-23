@@ -8,7 +8,7 @@ class PetitionForm extends Component {
           <div className="form-group row">
             <label htmlFor="endpointSelect" className="col-12 col-md-2 offset-md-3">Elige un tipo de búsqueda:</label>
             <div className="col-12 col-md-4">
-              <select className="form-control" name="endpointSelect" id="endpointSelect">
+              <select className="form-control" name="endpointSelect" id="endpointSelect" value={this.props.selectValue} onChange={this.props.changeFunc}>
                 <option value="films">Películas</option>
                 <option value="people">Personajes</option>
                 <option value="locations">Ubicaciones</option>
@@ -20,7 +20,7 @@ class PetitionForm extends Component {
           <div className="form-group row">
             <label htmlFor="textFilter" className="col-12 col-md-2 offset-md-3">Filtra por cualquier término que quieras:</label>
             <div className="col-12 col-md-4">
-              <input className="form-control" type="text" name="textFilter" placeholder="Escribe un término para filtar tu búsqueda" id="textfilter" />
+              <input className="form-control" type="text" name="textFilter" placeholder="Escribe un término para filtar tu búsqueda" id="textfilter" value={this.props.filterValue} onChange={this.props.changeFunc}/>
               <small className="form-text text-muted">Puedes dejarlo vacío.</small>
             </div>
           </div>

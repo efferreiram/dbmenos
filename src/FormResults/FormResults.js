@@ -8,6 +8,8 @@ class FormResults extends Component {
     this.state = {
       'resultsKeys': null,
       'results': [],
+      'selectValue': 'films',
+      'filterValue': '',
       'exampleResults': [
         {'name':'Castle in the Sky', 'year':'1986', 'director':'Hayao Miyazaki', 'producer':'Isao Takahata'},
         {'name':'Grave of the Fireflies', 'year':'1988', 'director':'Isao Takahata', 'producer':'Toru Hara'},
@@ -15,6 +17,17 @@ class FormResults extends Component {
       ],
       'exampleKeys': ['name', 'year', 'director', 'producer'],
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit() {
+    console.log('sumbitted');
+  }
+
+  handleChange(e) {
+    console.log('changed');
   }
 
   render() {
@@ -23,8 +36,8 @@ class FormResults extends Component {
         <div className="col-12 text-center">
           <h1 className="nav-link-target" id="lookup">Hacer Peticiones</h1>
         </div>
-        <PetitionForm />
-        <ResultsTable results={this.state.exampleResults} keys={this.state.exampleKeys}/>
+        <PetitionForm selectValue={this.state.selectValue} filterValue={this.state.filterValue} changeFunc={this.handleChange} submitFunc={this.handleSubmit} />
+        <ResultsTable results={this.state.exampleResults} keys={this.state.exampleKeys} />
       </div>
     );
   }
