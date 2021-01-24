@@ -4,7 +4,7 @@ class SingleSearch extends Component {
   render()
   {
     return (
-      <a href="#" className="list-group-item list-group-item-action">Películas: Nausicaä</a>
+      <li className="list-group-item">Películas: Nausicaä</li>
     );
   }
 }

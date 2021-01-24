@@ -9,11 +9,11 @@ class RecentSearches extends Component {
           <h1 className="nav-link-content" id="searches">Los usuarios están buscando...</h1>
         </div>
         <div className="col-12 col-md-6 offset-md-3">
-          <div className="list-group text-center">
+          <ul className="list-group text-center">
             <SingleSearch />
             <SingleSearch />
             <SingleSearch />
-          </div>
+          </ul>
         </div>
       </div>
 

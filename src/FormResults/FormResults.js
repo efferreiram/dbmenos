@@ -7,77 +7,43 @@ class FormResults extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      'resultsType': 'people',
-      'results': [
-        {
-          "id": "fe93adf2-2f3a-4ec4-9f68-5422f1b87c01",
-          "name": "Pazu",
-          "gender": "Male",
-          "age": "13",
-          "eye_color": "Black",
-          "hair_color": "Brown",
-          "films": [
-            "https://ghibliapi.herokuapp.com/films/2baf70d1-42bb-4437-b551-e5fed5a87abe"
-          ],
-          "species": "https://ghibliapi.herokuapp.com/species/af3910a6-429f-4c74-9ad5-dfe1c4aa04f2",
-          "url": "https://ghibliapi.herokuapp.com/people/fe93adf2-2f3a-4ec4-9f68-5422f1b87c01"
-        },
-        {
-          "id": "598f7048-74ff-41e0-92ef-87dc1ad980a9",
-          "name": "Lusheeta Toel Ul Laputa",
-          "gender": "Female",
-          "age": "13",
-          "eye_color": "Black",
-          "hair_color": "Black",
-          "films": [
-            "https://ghibliapi.herokuapp.com/films/2baf70d1-42bb-4437-b551-e5fed5a87abe"
-          ],
-          "species": "https://ghibliapi.herokuapp.com/species/af3910a6-429f-4c74-9ad5-dfe1c4aa04f2",
-          "url": "https://ghibliapi.herokuapp.com/people/598f7048-74ff-41e0-92ef-87dc1ad980a9"
-        },
-        {
-          "id": "3bc0b41e-3569-4d20-ae73-2da329bf0786",
-          "name": "Dola",
-          "gender": "Female",
-          "age": "60",
-          "eye_color": "Black",
-          "hair_color": "Peach",
-          "films": [
-            "https://ghibliapi.herokuapp.com/films/2baf70d1-42bb-4437-b551-e5fed5a87abe"
-          ],
-          "species": "https://ghibliapi.herokuapp.com/species/af3910a6-429f-4c74-9ad5-dfe1c4aa04f2",
-          "url": "https://ghibliapi.herokuapp.com/people/3bc0b41e-3569-4d20-ae73-2da329bf0786"
-        }],
-        'selectValue': 'films',
-        'filterValue': '',
+      'resultsType': '',
+      'results': [],
+        'endpointSelect': 'films',
+        'textFilter': '',
       };
 
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit(e) {
+    handleSubmit(event) {
+      console.log("aaaa")
       var self = this;
-      var type = this.state.selectValue;
+      var type = this.state.endpointSelect;
       axios.get('http://localhost:8081', {
         params: {
-          textFilter: this.state.filterValue,
-          searchType: this.state.selectValue,
+          textFilter: this.state.textFilter,
+          searchType: this.state.endpointSelect,
         }
       }).then(function (response) {
-        console.log(Object.keys(response.data[0]));
         self.setState({
           results: response.data,
           resultsType: type,
+          queryTime: Date.now(),
         });
       }).catch(function (error) {
         console.log(error);
       });
-      e.preventDefault();
+      event.preventDefault();
     }
 
-    handleChange(e) {
-      console.log(e);
+    handleChange(event) {
+      var target = event.target.name;
+      var value = event.target.value;
+      this.setState({
+        [target]: value
+      });
     }
 
     render() {
@@ -86,8 +52,8 @@ class FormResults extends Component {
         <div className="col-12 text-center">
         <h1 className="nav-link-target" id="lookup">Hacer Peticiones</h1>
         </div>
-        <PetitionForm selectValue={this.state.selectValue} filterValue={this.state.filterValue} changeFunc={this.handleChange} submitFunc={this.handleSubmit} />
-        <ResultsTable results={this.state.results} resultsType={this.state.resultsType} />
+        <PetitionForm selectValue={this.state.endpointSelect} filterValue={this.state.textFilter} changeFunc={this.handleChange} submitFunc={this.handleSubmit} />
+        <ResultsTable key={this.state.queryTime} results={this.state.results} resultsType={this.state.resultsType} />
         </div>
       );
     }

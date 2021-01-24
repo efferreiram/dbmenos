@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import SingleResult from './SingleResult/SingleResult';
 
 class JustTable extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   getHeaderKeys(resultsType) {
     const header_keys = {
       'films': ['title', 'director', 'producer', 'release_date'],
@@ -63,31 +59,34 @@ class JustTable extends Component {
     );
   }
 
-
-
   render() {
-    var keys = this.getHeaderKeys(this.props.resultsType);
-    var headers = this.renderHeaders(keys);
-    var results = [];
-    for(var i = 0; i < 3; ++i) {
-      results.push(this.renderResult(i, keys));
-    }
+    if (this.props.results.length > 0) {
+      var keys = this.getHeaderKeys(this.props.resultsType);
+      var headers = this.renderHeaders(keys);
+      var results = [];
+      for(var i = 0; i < this.props.results.length; ++i) {
+        results.push(this.renderResult(i, keys));
+      }
 
-    return (
-      <div className="col-12">
-        <h2 className="text-center">Resultados</h2>
-        <div className="table-responsive">
-          <table className="table table-striped">
-            <thead className="thead-dark">
-              {headers}
-            </thead>
-            <tbody>
-              {results}
-            </tbody>
-          </table>
+      return (
+        <div className="col-12">
+          <h2 className="text-center">Resultados</h2>
+          <div className="table-responsive">
+            <table className="table table-striped">
+              <thead className="thead-dark">
+                {headers}
+              </thead>
+              <tbody>
+                {results}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+    else {
+      return (null);
+    }
   }
 }
 
