@@ -87,7 +87,18 @@ class ResultsTable extends Component {
       );
     }
     else {
-      return (null);
+      return (
+        <div className="row row-content m-auto">
+          <div className="col-12">
+            <h2 className="text-center">Sin Resultados</h2>
+            <div className="table-responsive">
+              <table className="table table-striped">
+
+              </table>
+            </div>
+          </div>
+        </div>
+      );
     }
   }
 }

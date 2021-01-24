@@ -10,7 +10,7 @@ class VideoEmbed extends Component {
           </div>
           <div className="col-12 col-md-8 offset-md-2">
             <div className="embed-responsive embed-responsive-16by9">
-              <iframe className="embed-responsive-item" title="test" src="https://www.youtube.com/embed/h0ffIJ7ZO4U" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+              <iframe className="embed-responsive-item" title="test" src="https://www.youtube.com/embed/hGQbW-0VRFs" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
             </div>
           </div>
         </div>
