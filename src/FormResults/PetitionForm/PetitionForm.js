@@ -4,7 +4,7 @@ class PetitionForm extends Component {
   render() {
     return (
       <div className="col-12">
-        <form>
+        <form onSubmit={this.props.submitFunc}>
           <div className="form-group row">
             <label htmlFor="endpointSelect" className="col-12 col-md-2 offset-md-3">Elige un tipo de búsqueda:</label>
             <div className="col-12 col-md-4">

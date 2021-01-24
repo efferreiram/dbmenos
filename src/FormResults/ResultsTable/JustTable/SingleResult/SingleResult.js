@@ -10,9 +10,9 @@ class SingleResult extends Component {
     for(var i = 0; i < this.props.keys.length; i++) {
       var key = this.props.keys[i];
       var data = this.props.result[key];
-      rows.push(this.renderData(data, key));
+      rows.push(this.renderData(data, i));
     }
-    
+
     return (
       <tr key={this.props.resultid}>
         {rows}

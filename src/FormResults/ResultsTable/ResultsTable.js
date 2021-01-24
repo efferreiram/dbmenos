@@ -6,7 +6,7 @@ class ResultsTable extends Component {
   render() {
     return (
       <div className="row row-content m-auto">
-        <JustTable results={this.props.results} keys={this.props.keys}/>
+        <JustTable results={this.props.results} resultsType={this.props.resultsType}/>
         <Pagination />
       </div>
     );
