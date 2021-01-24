@@ -3,7 +3,6 @@ import NavBar from './NavBar/NavBar';
 import JumboHeader from './JumboHeader/JumboHeader';
 import VideoEmbed from './VideoEmbed/VideoEmbed';
 import FormResults from './FormResults/FormResults';
-import RecentSearches from './RecentSearches/RecentSearches';
 
 class App extends Component {
   render() {
@@ -14,7 +13,6 @@ class App extends Component {
         <div className="container">
           <VideoEmbed />
           <FormResults />
-          <RecentSearches />
         </div>
       </div>
     );

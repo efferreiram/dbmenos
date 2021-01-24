@@ -9,18 +9,38 @@ class FormResults extends Component {
     this.state = {
       'resultsType': '',
       'results': [],
-        'endpointSelect': 'films',
-        'textFilter': '',
+      'endpointSelect': 'films',
+      'textFilter': '',
       };
 
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+      var endpointValue = 'films';
+      var textFilterValue = '';
+
+      if (localStorage.getItem('endpointSelect') !== null) {
+        endpointValue = localStorage.getItem('endpointSelect');
+      }
+      if (localStorage.getItem('textFilter') !== null) {
+        textFilterValue = localStorage.getItem('textFilter');
+      }
+
+      this.setState({
+        'endpointSelect': endpointValue,
+        'textFilter': textFilterValue
+      })
+
+    }
+
     handleSubmit(event) {
-      console.log("aaaa")
       var self = this;
       var type = this.state.endpointSelect;
+      var filter = this.state.textFilter;
+      localStorage.setItem('endpointSelect', type);
+      localStorage.setItem('textFilter', filter);
       axios.get('http://localhost:8081', {
         params: {
           textFilter: this.state.textFilter,
@@ -50,7 +70,7 @@ class FormResults extends Component {
       return (
         <div className="row row-content">
         <div className="col-12 text-center">
-        <h1 className="nav-link-target" id="lookup">Hacer Peticiones</h1>
+        <h1 id="lookup">Hacer Peticiones</h1>
         </div>
         <PetitionForm selectValue={this.state.endpointSelect} filterValue={this.state.textFilter} changeFunc={this.handleChange} submitFunc={this.handleSubmit} />
         <ResultsTable key={this.state.queryTime} results={this.state.results} resultsType={this.state.resultsType} />

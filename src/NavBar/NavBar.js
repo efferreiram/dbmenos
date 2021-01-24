@@ -14,7 +14,6 @@ class NavBar extends Component {
             <ul className="navbar-nav mr-auto">
               <li className="nav-item"><a className="nav-link" href="#video">¿Cómo funciona?</a></li>
               <li className="nav-item"><a className="nav-link" href="#lookup">Consultar el API de Ghibli</a></li>
-              <li className="nav-item"><a className="nav-link" href="#searches">Búsquedas más Recientes</a></li>
             </ul></div>
         </div>
       </nav>

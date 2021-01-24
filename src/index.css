@@ -27,12 +27,3 @@ body {
   background-color: #343a40;
   border-color: #343a40;
 }
-
-.nav-link-target::before {
-  display: block;
-  content: " ";
-  margin-top: -60px;
-  height: 60px;
-  visibility: hidden;
-  pointer-events: none;
-}
